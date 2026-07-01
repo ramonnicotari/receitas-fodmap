@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Receitas Low FODMAP — Dr. Ramon Nicotari</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --verde:      #2D6A4F;
+    --verde-cl:   #52B788;
+    --verde-bg:   #D8F3DC;
+    --creme:      #F9F5EF;
+    --creme2:     #EFE8DC;
+    --marrom:     #5C3D1E;
+    --texto:      #1C1C1A;
+    --texto-2:    #4A4A46;
+    --texto-3:    #7A7A72;
+    --borda:      #DDD8CF;
+    --branco:     #FFFFFF;
+    --amarelo-bg: #FFF8E7;
+    --radius:     10px;
+  }
+
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; background: var(--creme); color: var(--texto); line-height: 1.7; font-size: 16px; }
+
+  /* ── HERO ── */
+  .hero { background: var(--verde); color: #fff; padding: 64px 24px 52px; text-align: center; position: relative; overflow: hidden; }
+  .hero::before { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse at 70% 30%, rgba(82,183,136,.25) 0%, transparent 60%); pointer-events: none; }
+  .hero-eyebrow { font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--verde-cl); font-weight: 600; margin-bottom: 12px; }
+  .hero h1 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 600; line-height: 1.15; margin-bottom: 16px; }
+  .hero h1 em { font-style: italic; color: var(--verde-cl); }
+  .hero-sub { font-size: 16px; color: rgba(255,255,255,.75); max-width: 500px; margin: 0 auto 24px; font-weight: 300; }
+  .hero-badge { display: inline-block; background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.25); border-radius: 40px; padding: 7px 20px; font-size: 13px; color: rgba(255,255,255,.85); letter-spacing: .02em; }
+
+  /* ── NAV ── */
+  .nav-interno { background: var(--branco); border-bottom: 1px solid var(--borda); position: sticky; top: 0; z-index: 100; padding: 0 24px; }
+  .nav-interno ul { list-style: none; display: flex; gap: 0; max-width: 900px; margin: 0 auto; overflow-x: auto; scrollbar-width: none; }
+  .nav-interno ul::-webkit-scrollbar { display: none; }
+  .nav-interno a { display: block; padding: 15px 16px; font-size: 13px; font-weight: 500; color: var(--texto-3); text-decoration: none; border-bottom: 2px solid transparent; white-space: nowrap; transition: color .2s, border-color .2s; }
+  .nav-interno a:hover { color: var(--verde); border-color: var(--verde-cl); }
+
+  /* ── LAYOUT ── */
+  .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+  section { padding: 56px 0; }
+  section + section { border-top: 1px solid var(--borda); }
+  .section-eyebrow { font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--verde-cl); font-weight: 600; margin-bottom: 10px; }
+  .section-titulo { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 600; color: var(--verde); line-height: 1.2; margin-bottom: 16px; }
+  .section-texto { font-size: 15px; color: var(--texto-2); max-width: 680px; margin-bottom: 14px; line-height: 1.75; }
+
+  /* ── CARD AUTOR ── */
+  .autor-card { background: var(--branco); border: 1px solid var(--borda); border-radius: 16px; padding: 20px 24px; display: flex; align-items: center; gap: 16px; margin-bottom: 36px; box-shadow: 0 2px 12px rgba(45,106,79,.07); }
+  .autor-avatar { width: 52px; height: 52px; border-radius: 50%; background: var(--verde); color: #fff; font-size: 16px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; letter-spacing: .03em; border: 3px solid var(--verde-bg); }
+  .autor-info { flex: 1; min-width: 0; }
+  .autor-nome { font-size: 15px; font-weight: 600; color: var(--texto); display: block; margin-bottom: 3px; }
+  .autor-cargo { font-size: 12px; color: var(--texto-3); display: block; line-height: 1.5; }
+  .ig-btn { display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); color: #fff; text-decoration: none; padding: 9px 18px; border-radius: 24px; font-size: 13.5px; font-weight: 600; white-space: nowrap; flex-shrink: 0; transition: opacity .18s, transform .15s; margin-left: auto; box-shadow: 0 3px 10px rgba(220,39,67,.25); }
+  .ig-btn:hover { opacity: .88; transform: translateY(-1px); }
+  .ig-btn svg { width: 17px; height: 17px; fill: #fff; flex-shrink: 0; }
+  @media (max-width: 600px) {
+    .autor-card { flex-direction: column; align-items: flex-start; gap: 12px; padding: 16px 18px; }
+    .autor-top { display: flex; align-items: center; gap: 12px; width: 100%; }
+    .ig-btn { width: 100%; justify-content: center; margin-left: 0; }
+  }
+  @media (min-width: 601px) { .autor-top { display: contents; } }
+
+  /* ── SIGLA ── */
+  .sigla-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin: 28px 0; }
+  .sigla-card { background: var(--branco); border: 1px solid var(--borda); border-radius: var(--radius); padding: 16px; text-align: center; }
+  .sigla-letra { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 600; color: var(--verde); display: block; line-height: 1; margin-bottom: 4px; }
+  .sigla-nome { font-size: 11.5px; font-weight: 600; color: var(--marrom); display: block; margin-bottom: 3px; }
+  .sigla-desc { font-size: 11px; color: var(--texto-3); line-height: 1.4; }
+
+  /* ── TIPOS FODMAP ── */
+  .tipos-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 28px 0; }
+  @media (max-width: 540px) { .tipos-grid { grid-template-columns: 1fr; } }
+  .tipo-card { border-radius: var(--radius); padding: 16px 18px; border-left: 4px solid transparent; }
+  .tipo-card.frutose  { background: #FFF3E0; border-color: #E8860A; }
+  .tipo-card.lactose  { background: #E3F2FD; border-color: #1976D2; }
+  .tipo-card.frutanos { background: #EDE7F6; border-color: #7B1FA2; }
+  .tipo-card.poliois  { background: #FCE4EC; border-color: #C2185B; }
+  .tipo-card.gos      { background: #E8F5E9; border-color: #388E3C; }
+  .tipo-label { display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; padding: 2px 9px; border-radius: 20px; margin-bottom: 6px; }
+  .frutose  .tipo-label { background: #E8860A; color: #fff; }
+  .lactose  .tipo-label { background: #1976D2; color: #fff; }
+  .frutanos .tipo-label { background: #7B1FA2; color: #fff; }
+  .poliois  .tipo-label { background: #C2185B; color: #fff; }
+  .gos      .tipo-label { background: #388E3C; color: #fff; }
+  .tipo-nome { font-size: 14px; font-weight: 600; color: var(--texto); display: block; margin-bottom: 4px; }
+  .tipo-desc { font-size: 12.5px; color: var(--texto-2); line-height: 1.5; }
+  .tipo-ex   { font-size: 11.5px; color: var(--texto-3); margin-top: 5px; font-style: italic; }
+
+  /* ── FASES ── */
+  .fases-wrap { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin: 28px 0; }
+  @media (max-width: 540px) { .fases-wrap { grid-template-columns: 1fr; } }
+  .fase-card { background: var(--branco); border: 1px solid var(--borda); border-radius: var(--radius); padding: 20px 18px; }
+  .fase-numero { font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 600; color: var(--verde-bg); line-height: 1; margin-bottom: 6px; }
+  .fase-titulo { font-size: 15px; font-weight: 600; color: var(--verde); margin-bottom: 8px; }
+  .fase-texto  { font-size: 13px; color: var(--texto-2); line-height: 1.6; }
+
+  /* ── BENEFÍCIOS ── */
+  .beneficios-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin: 28px 0; }
+  .beneficio-card { background: var(--branco); border: 1px solid var(--borda); border-radius: var(--radius); padding: 16px; display: flex; gap: 12px; align-items: flex-start; }
+  .beneficio-icone { font-size: 22px; flex-shrink: 0; line-height: 1; margin-top: 2px; }
+  .beneficio-titulo { font-size: 14px; font-weight: 600; color: var(--texto); margin-bottom: 3px; }
+  .beneficio-desc   { font-size: 12.5px; color: var(--texto-3); line-height: 1.5; }
+
+  /* ── ALERTA ── */
+  .alerta { background: var(--amarelo-bg); border: 1px solid #F0C040; border-radius: var(--radius); padding: 18px 20px; display: flex; gap: 12px; align-items: flex-start; margin: 24px 0; font-size: 14px; color: var(--marrom); }
+  .alerta-icone { font-size: 20px; flex-shrink: 0; }
+
+  /* ── FILTROS ── */
+  .filtros-wrap { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
+  .filtro-btn { padding: 7px 16px; border-radius: 24px; border: 1.5px solid var(--borda); background: var(--branco); color: var(--texto-3); font-size: 13px; font-family: 'Inter', sans-serif; cursor: pointer; transition: all .18s; font-weight: 500; }
+  .filtro-btn:hover { border-color: var(--verde-cl); color: var(--verde); }
+  .filtro-btn.ativo { background: var(--verde); border-color: var(--verde); color: #fff; }
+
+  /* ── RECEITAS ── */
+  .receitas-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  @media (max-width: 560px) { .receitas-grid { grid-template-columns: 1fr; } }
+  .receita-card { background: var(--branco); border: 1px solid var(--borda); border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; transition: box-shadow .2s; }
+  .receita-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,.09); }
+  .card-topo { padding: 18px 18px 12px; }
+  .card-emoji { font-size: 26px; margin-bottom: 6px; display: block; }
+  .card-titulo { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 600; color: var(--verde); line-height: 1.25; margin-bottom: 6px; }
+  .card-desc { font-size: 12.5px; color: var(--texto-3); line-height: 1.5; margin-bottom: 8px; }
+  .card-catbadge { display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: 11px; font-weight: 600; }
+  .cat-cafe      { background: #FFF3E0; color: #8A4A00; }
+  .cat-lanche    { background: #E8F5E9; color: #1B5E20; }
+  .cat-refeicao  { background: #E3F2FD; color: #0D3B6E; }
+  .cat-sobremesa { background: #FCE4EC; color: #880E4F; }
+  .card-ings { padding: 0 18px 12px; border-top: 1px solid #f0ede8; margin-top: 8px; }
+  .card-ings-label { font-size: 10.5px; text-transform: uppercase; letter-spacing: .1em; color: var(--texto-3); font-weight: 600; padding-top: 12px; margin-bottom: 7px; display: block; }
+  .card-ings ul { list-style: none; padding: 0; }
+  .card-ings li { font-size: 12.5px; color: var(--texto-2); padding: 2.5px 0 2.5px 14px; position: relative; line-height: 1.45; }
+  .card-ings li::before { content: "·"; position: absolute; left: 3px; color: var(--verde-cl); font-size: 16px; line-height: 1.2; }
+  .card-extras { font-size: 11.5px; color: var(--texto-3); font-style: italic; padding-top: 4px; }
+  .toggle-preparo { width: 100%; border: none; background: none; border-top: 1px solid #f0ede8; padding: 12px 18px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; font-family: 'Inter', sans-serif; font-size: 12.5px; font-weight: 600; color: var(--verde); transition: background .15s; }
+  .toggle-preparo:hover { background: #f5faf6; }
+  .toggle-seta { font-size: 11px; transition: transform .2s; display: inline-block; }
+  .preparo-wrap { display: none; padding: 14px 18px 18px; background: #f5faf6; border-top: 1px solid #ddeee4; }
+  .preparo-wrap.visivel { display: block; }
+  .preparo-label { font-size: 10.5px; text-transform: uppercase; letter-spacing: .1em; font-weight: 600; color: var(--verde-cl); margin-bottom: 10px; display: block; }
+  .preparo-lista { list-style: none; padding: 0; counter-reset: passo; }
+  .preparo-lista li { counter-increment: passo; font-size: 12.5px; color: var(--texto-2); padding: 5px 0 5px 28px; position: relative; line-height: 1.5; border-bottom: 1px solid #ddeee4; }
+  .preparo-lista li:last-child { border-bottom: none; padding-bottom: 0; }
+  .preparo-lista li::before { content: counter(passo); position: absolute; left: 0; top: 5px; width: 18px; height: 18px; background: var(--verde); color: #fff; border-radius: 50%; font-size: 10px; font-weight: 700; display: flex; align-items: center; justify-content: center; line-height: 1; text-align: center; padding-top: 1px; }
+
+  /* ── CTA IG ── */
+  .ig-cta-wrap { background: var(--creme2); border-top: 1px solid var(--borda); padding: 40px 24px; text-align: center; }
+  .ig-footer { display: inline-flex; align-items: center; gap: 9px; background: linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); color: #fff; text-decoration: none; padding: 12px 26px; border-radius: 28px; font-size: 15px; font-weight: 600; transition: opacity .18s, transform .15s; box-shadow: 0 4px 14px rgba(220,39,67,.28); }
+  .ig-footer:hover { opacity: .88; transform: translateY(-1px); }
+  .ig-footer svg { width: 20px; height: 20px; fill: #fff; flex-shrink: 0; }
+
+  /* ── FOOTER ── */
+  footer { background: var(--verde); color: rgba(255,255,255,.7); text-align: center; padding: 36px 24px; font-size: 13px; }
+  footer strong { color: #fff; }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <p class="hero-eyebrow">Receitas Low FODMAP</p>
+  <h1>Comer bem <em>faz diferença</em></h1>
+  <p class="hero-sub">Receitas práticas, nutritivas e saborosas para o protocolo Low FODMAP — com tudo que você precisa saber antes de começar.</p>
+  <span class="hero-badge">✦ Baseado em Monash University</span>
+</header>
+
+<nav class="nav-interno" aria-label="Seções">
+  <ul>
+    <li><a href="#o-que-e">O que são FODMAPs</a></li>
+    <li><a href="#protocolo">Como funciona</a></li>
+    <li><a href="#beneficios">Benefícios</a></li>
+    <li><a href="#receitas">Receitas</a></li>
+  </ul>
+</nav>
+
+<!-- O QUE SÃO -->
+<section id="o-que-e">
+  <div class="container">
+
+    <div class="autor-card">
+      <div class="autor-top">
+        <span class="autor-avatar">RN</span>
+        <div class="autor-info">
+          <span class="autor-nome">Dr. Ramon Nicotari</span>
+          <span class="autor-cargo">Nutricionista CRN3-31139 · Pós-graduado em Nutrição Clínica, Esportiva e Fitoterapia · Foco em Suplementação Avançada · Anti-SASP | Genética | Autoimunes</span>
+        </div>
+      </div>
+      <a class="ig-btn" href="https://www.instagram.com/ramonnicotari" target="_blank" rel="noopener" aria-label="Instagram Dr. Ramon Nicotari">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        @ramonnicotari
+      </a>
+    </div>
+
+    <p class="section-eyebrow">Entenda o conceito</p>
+    <h2 class="section-titulo">O que são FODMAPs?</h2>
+    <p class="section-texto"><strong>FODMAP</strong> é uma sigla em inglês para <strong>F</strong>ermentable <strong>O</strong>ligo-, <strong>D</strong>i-, <strong>M</strong>onosaccharides <strong>A</strong>nd <strong>P</strong>olyols — ou seja, <em>carboidratos fermentativos</em>. São açúcares e fibras de difícil absorção no intestino delgado que, ao chegarem ao cólon, são fermentados pelas bactérias intestinais.</p>
+    <p class="section-texto">Essa fermentação produz gás, aumenta a quantidade de água no intestino e causa os sintomas tão conhecidos: inchaço, distensão abdominal, gases, dor, diarreia ou constipação.</p>
+
+    <div class="sigla-grid">
+      <div class="sigla-card"><span class="sigla-letra">F</span><span class="sigla-nome">Fermentable</span><span class="sigla-desc">Fermentáveis pelas bactérias do intestino grosso</span></div>
+      <div class="sigla-card"><span class="sigla-letra">O</span><span class="sigla-nome">Oligossacarídeos</span><span class="sigla-desc">Frutanos e GOS — cadeias de açúcar não absorvíveis</span></div>
+      <div class="sigla-card"><span class="sigla-letra">D</span><span class="sigla-nome">Dissacarídeos</span><span class="sigla-desc">Lactose — açúcar do leite e derivados</span></div>
+      <div class="sigla-card"><span class="sigla-letra">M</span><span class="sigla-nome">Monossacarídeos</span><span class="sigla-desc">Frutose em excesso — mel, frutas, xarope de milho</span></div>
+      <div class="sigla-card"><span class="sigla-letra">A</span><span class="sigla-nome">And (e)</span><span class="sigla-desc">Conectivo da sigla</span></div>
+      <div class="sigla-card"><span class="sigla-letra">P</span><span class="sigla-nome">Poliós</span><span class="sigla-desc">Sorbitol e manitol — álcoois de açúcar</span></div>
+    </div>
+
+    <p class="section-texto">Esses carboidratos estão presentes em alimentos do dia a dia como maçã, pêra, manga, alho, cebola, trigo, leite e feijão. O problema ocorre quando o intestino não consegue absorvê-los adequadamente, desencadeando sintomas.</p>
+    <p class="section-texto">Cerca de <strong>10 a 15% da população</strong> é afetada pela Síndrome do Intestino Irritável (SII), e a dieta Low FODMAP foi desenvolvida pela <strong>Monash University (Austrália)</strong> justamente para controlar esses sintomas com alto grau de eficácia científica.</p>
+  </div>
+</section>
+
+<!-- PROTOCOLO -->
+<section id="protocolo">
+  <div class="container">
+    <p class="section-eyebrow">O passo a passo</p>
+    <h2 class="section-titulo">Como funciona o protocolo?</h2>
+    <p class="section-texto">A estratégia Low FODMAP é dividida em fases e deve ser feita com acompanhamento de um nutricionista. Não é uma dieta definitiva — é um protocolo de investigação para identificar o que o seu corpo tolera.</p>
+    <div class="fases-wrap">
+      <div class="fase-card"><div class="fase-numero">01</div><div class="fase-titulo">Fase de eliminação</div><p class="fase-texto">Duração de <strong>2 a 8 semanas</strong>. Todos os alimentos altos em FODMAP são retirados da dieta. O objetivo é "silenciar" o intestino e reduzir os sintomas.</p></div>
+      <div class="fase-card"><div class="fase-numero">02</div><div class="fase-titulo">Fase de reintrodução</div><p class="fase-texto">Cada grupo de FODMAP é reintroduzido <strong>um por vez</strong>, em doses crescentes, para identificar quais causam sintomas e em que quantidade.</p></div>
+      <div class="fase-card"><div class="fase-numero">03</div><div class="fase-titulo">Dieta personalizada</div><p class="fase-texto">Com base nos testes, é montada uma <strong>dieta individual e equilibrada</strong> — eliminando apenas o que realmente incomoda.</p></div>
+    </div>
+    <div class="alerta">
+      <span class="alerta-icone">⚠️</span>
+      <div><strong>Importante:</strong> a dieta Low FODMAP não deve ser seguida indefinidamente. Os alimentos altos em FODMAP possuem fibras prebióticas importantes para a saúde da microbiota. O protocolo é uma ferramenta de investigação, não uma restrição permanente. Sempre busque acompanhamento profissional.</div>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFÍCIOS -->
+<section id="beneficios">
+  <div class="container">
+    <p class="section-eyebrow">Por que fazer</p>
+    <h2 class="section-titulo">Benefícios do protocolo Low FODMAP</h2>
+    <p class="section-texto">Estudos da Monash University mostram que cerca de <strong>75% das pessoas com SII</strong> relatam melhora significativa dos sintomas. Mas os benefícios vão além:</p>
+    <div class="beneficios-grid">
+      <div class="beneficio-card"><span class="beneficio-icone">🎯</span><div><p class="beneficio-titulo">Redução do inchaço</p><p class="beneficio-desc">Menos fermentação = menos gases e distensão abdominal.</p></div></div>
+      <div class="beneficio-card"><span class="beneficio-icone">😌</span><div><p class="beneficio-titulo">Alívio da dor</p><p class="beneficio-desc">Diminuição das cólicas e desconfortos intestinais frequentes.</p></div></div>
+      <div class="beneficio-card"><span class="beneficio-icone">🚽</span><div><p class="beneficio-titulo">Regularização do trânsito</p><p class="beneficio-desc">Melhora tanto da diarreia quanto da constipação associadas à SII.</p></div></div>
+      <div class="beneficio-card"><span class="beneficio-icone">🧠</span><div><p class="beneficio-titulo">Bem-estar geral</p><p class="beneficio-desc">Menos sintomas físicos impacta o humor, a energia e a qualidade de vida.</p></div></div>
+      <div class="beneficio-card"><span class="beneficio-icone">🔍</span><div><p class="beneficio-titulo">Autoconhecimento alimentar</p><p class="beneficio-desc">Você descobre exatamente quais alimentos o seu corpo tolera.</p></div></div>
+      <div class="beneficio-card"><span class="beneficio-icone">🥗</span><div><p class="beneficio-titulo">Alimentação de verdade</p><p class="beneficio-desc">A estratégia incentiva o consumo de alimentos naturais, integrais e nutritivos.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- RECEITAS -->
+<section id="receitas">
+  <div class="container">
+    <p class="section-eyebrow">Receitas Low FODMAP · Instituto RN · Dr. Ramon Nicotari</p>
+    <h2 class="section-titulo">Receitas para o protocolo</h2>
+    <p class="section-texto">Receitas fáceis, práticas, nutritivas e saborosas — todas alinhadas com as diretrizes da Monash University. Clique em cada card para ver o modo de preparo.</p>
+    <div class="filtros-wrap" id="filtros"></div>
+    <div class="receitas-grid" id="grid"></div>
+  </div>
+</section>
+
+<div class="ig-cta-wrap">
+  <a class="ig-footer" href="https://www.instagram.com/ramonnicotari" target="_blank" rel="noopener" aria-label="Instagram Dr. Ramon Nicotari">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+    Siga no Instagram: @ramonnicotari
+  </a>
+</div>
+
+<footer>
+  <p><strong>Dr. Ramon Nicotari</strong> · Nutricionista CRN3-31139 · Pós-graduado em Nutrição Clínica, Esportiva e Fitoterapia · Foco em Suplementação Avançada · Anti-SASP | Genética | Autoimunes</p>
+  <p style="margin-top:8px;">Instituto RN · Materiais Educativos · Fonte científica: Monash University, Austrália</p>
+</footer>
+
+<script>
+const receitas = [
+  { emoji:"🥤", titulo:"Smoothie de açaí", cat:"cafe", catLabel:"Café da manhã",
+    desc:"Cremoso, refrescante, com sabor intenso e frutas vermelhas.",
+    ingredientes:["1 xícara (150g) de abobrinha fresca congelada sem sementes","1 banana pequena","2 colheres (sopa) de açaí em pó orgânico","½ xícara de água"],
+    extras:["Cobertura: morangos, figos, noz-pecã"],
+    preparo:["Retire a casca da abobrinha congelada.","Adicione todos os ingredientes no liquidificador e bata na potência máxima por 50–60 segundos até creme uniforme e sedoso.","Evite bater por muito tempo para o creme não esquentar.","Sirva com noz-pecã, morango e figos."]},
+
+  { emoji:"🌙", titulo:"Overnight oats", cat:"cafe", catLabel:"Café da manhã",
+    desc:"Preparado na noite anterior — 2 minutos de preparo, pronto de manhã.",
+    ingredientes:["1 xícara de leite de amêndoas","2 colheres (sopa) de aveia em flocos s/glúten","1 colher (sopa) de chia","⅓ de banana picada"],
+    extras:["½ colher (chá) de canela em pó","1 colher de pasta de macadâmia ou amendoim"],
+    preparo:["Adicione todos os ingredientes básicos em um pote e misture bem.","Acrescente os toppings e tampe.","Deixe na geladeira por pelo menos 4h (ou da noite para o dia).","Pode manter na geladeira por até 3 dias."]},
+
+  { emoji:"🥥", titulo:"Mingau com geleia de maracujá e camomila", cat:"cafe", catLabel:"Café da manhã / Ceia",
+    desc:"Mingau de coco com geleia antioxidante de maracujá. Rico em fibras.",
+    ingredientes:["¼ xícara de coco ralado fresco","¼ xícara de farinha de macadâmia ou nozes","¼ xícara de leite de coco","½ colher (chá) de extrato de baunilha","1 colher (sopa) de açúcar mascavo ou stévia"],
+    extras:["Geleia: 1 xícara de maracujá, 1 xícara de chá de camomila, 3 colheres de chia, ½ xícara de açúcar demerara"],
+    preparo:["Mingau: coloque todos os ingredientes em panela pequena, aqueça até ferver, abaixe o fogo e cozinhe por ~5 min até engrossar.","Geleia: faça infusão de camomila. Adicione todos os ingredientes em panela e leve ao fogo até ferver. Cozinhe por ~20 min até ponto de geleia.","Sirva o mingau com a geleia por cima."]},
+
+  { emoji:"🍌", titulo:"Smoothie de banana e morango", cat:"cafe", catLabel:"Café da manhã / Lanche",
+    desc:"Cremoso, colorido e nutritivo. Base de abobrinha e banana congelada.",
+    ingredientes:["150g de abobrinha sem casca congelada","50g de batata doce cozida gelada","50g de banana prata congelada","30g de CocoCream","50ml de leite de amêndoas","1 colher (sopa) de melado de cana"],
+    extras:["Toppings: mirtilos, morangos, nibs de cacau, coco ralado"],
+    preparo:["Adicione todos os ingredientes base no liquidificador.","Bata por 1 minuto na potência máxima até textura cremosa.","Adicione mais líquido se necessário.","Acrescente os toppings e sirva."]},
+
+  { emoji:"🍫", titulo:"Smoothie de cacau", cat:"lanche", catLabel:"Lanche",
+    desc:"Sabor intenso de chocolate, incrivelmente cremoso e nutritivo.",
+    ingredientes:["1 xícara (chá) de batata doce cozida e gelada (ou inhame)","⅓ de banana congelada","2 colheres (sopa) de cacau em pó","⅓ de xícara de leite de coco","1 colher (sopa) de creme de amendoim"],
+    extras:["Toppings: coco em lascas, cacau em pó, pasta de amendoim, canela"],
+    preparo:["Adicione todos os ingredientes no liquidificador na ordem da lista.","Bata por 1 minuto na potência máxima até textura cremosa.","Adicione mais líquido se necessário.","Acrescente os toppings e sirva."]},
+
+  { emoji:"🧀", titulo:"Cream cheese de macadâmia", cat:"lanche", catLabel:"Lanche / Petisco",
+    desc:"Creme com sabor e textura de cream cheese, à base de macadâmia. Versátil!",
+    ingredientes:["1½ xícara de macadâmia","2 colheres (sopa) de levedura nutricional (cheese free)","1 colher (chá) de sal marinho","10g de pimenta do reino","2 colheres (sopa) de vinagre de maçã ou limão","2 colheres (sopa) de azeite extra virgem","¼ de xícara de água"],
+    extras:[],
+    preparo:["Deixe as macadâmias de molho em água por pelo menos 6h.","Escorra e lave bem.","Processe as macadâmias com todos os ingredientes até virar creme sedoso.","Se necessário, adicione um pouco de leite vegetal para mais cremosidade."]},
+
+  { emoji:"🥦", titulo:"Chips de abobrinha", cat:"lanche", catLabel:"Lanche / Petisco",
+    desc:"Salgado, crocante, apenas 2 ingredientes principais. Ótimo petisco.",
+    ingredientes:["½ xícara de queijo parmesão ralado","½ xícara de queijo canastra","3 xícaras de abobrinha ralada"],
+    extras:["Temperos opcionais: pimenta, páprica, cúrcuma, ervas"],
+    preparo:["Pré-aqueça o forno em 180°C.","Rale a abobrinha e esprema em pano limpo para retirar o excesso de água.","Misture a abobrinha com queijo e temperos.","Em assadeira untada, disponha em círculos deixando 2 cm de espaço.","Asse por ~30 min até dourar. Deixe esfriar dentro do forno para ficarem mais crocantes."]},
+
+  { emoji:"🍓", titulo:"Creme de framboesa", cat:"sobremesa", catLabel:"Sobremesa / Lanche",
+    desc:"Cremoso, sem lactose e sem glúten. Nutritivo e delicioso.",
+    ingredientes:["1 inhame cozido e gelado (120g)","1 colher (chá) de framboesa liofilizada","1 xícara de framboesa fresca","½ xícara de leite de arroz ou amêndoas","1 colher (sobremesa) de óleo TCM (Lótus de coco)","1 colher (sopa) de pasta de macadâmia ou nozes","1 colher (café) de açúcar demerara ou stévia"],
+    extras:["Toppings: nibs de cacau, framboesas frescas, amêndoas, nozes pecã"],
+    preparo:["Adicione todos os ingredientes no liquidificador.","Bata por 1 minuto na potência máxima até textura cremosa.","Adicione mais líquido se necessário.","Acrescente os toppings e sirva."]},
+
+  { emoji:"🌀", titulo:"Pudim de chia com geleia de framboesa", cat:"sobremesa", catLabel:"Sobremesa",
+    desc:"Sem lactose, sem glúten, plant based. Perfeito para um lanche nutritivo.",
+    ingredientes:["½ xícara de leite de coco","½ xícara de leite de amêndoas","2 colheres (sopa) de chia","2 colheres (sopa) de coco ralado fresco","¼ de colher (chá) de stévia com baunilha"],
+    extras:["Geleia: 3 xícaras de framboesas, ½ xícara de suco de laranja, néctar de coco, 2 colheres de chia"],
+    preparo:["Pudim: misture todos os ingredientes, reserve 15 min, misture novamente e leve à geladeira por pelo menos 4h.","Geleia: ferva as framboesas com suco de laranja, néctar de coco e chia por 10 min até reduzir. Refrigere.","Montagem: alterne camadas de pudim e geleia em um copo ou taça."]},
+
+  { emoji:"🫓", titulo:"Tortillas veganas low carb sem glúten", cat:"refeicao", catLabel:"Refeição",
+    desc:"Versátil como wrap, taco ou base de pizza. Fácil e sem glúten.",
+    ingredientes:["1 xícara de farinha de amêndoas","3 colheres (sopa) de Psyllium","¼ de colher (chá) de sal marinho","½ xícara de água morna","½ colher (sopa) de azeite"],
+    extras:["Recheio: cenoura ralada, mix de folhas, tomate cereja, brotos, gergelim","Molho tahine oriental com gengibre, mostarda dijon, shoyu de coco, vinagre de arroz"],
+    preparo:["Misture os ingredientes secos. Adicione azeite e água morna.","Aguarde 5 min para o psyllium hidratar e dar liga.","Abra a massa entre papel manteiga com rolo (bem fina).","Doure os dois lados em frigideira em fogo médio.","Sirva com o recheio e molho de sua preferência."]},
+
+  { emoji:"🎃", titulo:"Abóbora assada com especiarias", cat:"refeicao", catLabel:"Refeição / Acompanhamento",
+    desc:"Casquinha crocante com canela e cominho, com molho cremoso de tahine.",
+    ingredientes:["½ abóbora cabotia","1 colher (chá) de canela","1 colher (chá) de cominho","1 colher (chá) de sal marinho","Pimenta do reino a gosto","4 colheres de azeite de oliva"],
+    extras:["Molho tahine: gengibre picado, mostarda dijon, vinagre de arroz, melado, óleo de gergelim, tahine, água morna"],
+    preparo:["Pré-aqueça o forno a 220°C.","Corte a abóbora em cubos, tempere e disponha em assadeira.","Leve ao forno por 30–40 min até dourar bem.","Bata todos os ingredientes do molho no liquidificador até ficar cremoso.","Sirva a abóbora com o molho tahine."]},
+
+  { emoji:"🫛", titulo:"Quiabo orgânico e amêndoas", cat:"refeicao", catLabel:"Refeição / Acompanhamento",
+    desc:"Surpreendente! Rico em vitaminas K, C, ácido fólico e antioxidantes.",
+    ingredientes:["1 porção de quiabos orgânicos","1 limão cortado ao meio","4 paus de canela","1 colher (chá) de páprica agridoce","Sal, pimenta e ervas a gosto","10 amêndoas (opcional)"],
+    extras:[],
+    preparo:["Pré-aqueça o forno a 220°C.","Coloque os quiabos lavados em assadeira, tempere com azeite e especiarias.","Adicione as metades de limão viradas para baixo e os paus de canela.","Asse por 30–40 minutos até dourar."]},
+
+  { emoji:"🥕", titulo:"Creme de cenoura assado", cat:"refeicao", catLabel:"Refeição",
+    desc:"Creme orgânico sedoso com sabor de legumes assados e especiarias.",
+    ingredientes:["6 cenouras médias orgânicas","2 xícaras de leite de amêndoas","Alecrim e temperos a gosto","Azeite de oliva virgem","Sal marinho, pimenta, cúrcuma","Levedura nutricional (Nutritional Yeast Chicken Free)"],
+    extras:[],
+    preparo:["Pré-aqueça o forno a 220°C. Corte as cenouras em rodelas grossas.","Coloque em assadeira com azeite e temperos. Asse por ~30 min até dourar.","Bata os legumes assados com o leite de amêndoas até obter creme sedoso.","Ajuste a consistência com mais ou menos leite.","Sirva com castanhas ou amêndoas tostadas e limão."]}
+];
+
+const catFiltros = [
+  {id:"todos", label:"Todas"},
+  {id:"cafe",  label:"☀️ Café da manhã"},
+  {id:"lanche",label:"🥤 Lanche"},
+  {id:"refeicao",label:"🍽️ Refeição"},
+  {id:"sobremesa",label:"🍓 Sobremesa"},
+];
+const catClass = {cafe:"cat-cafe", lanche:"cat-lanche", refeicao:"cat-refeicao", sobremesa:"cat-sobremesa"};
+
+let filtroAtual = "todos";
+const filtrosEl = document.getElementById("filtros");
+const gridEl    = document.getElementById("grid");
+
+function buildFiltros() {
+  filtrosEl.innerHTML = "";
+  catFiltros.forEach(f => {
+    const btn = document.createElement("button");
+    btn.className = "filtro-btn" + (filtroAtual === f.id ? " ativo" : "");
+    btn.textContent = f.label;
+    btn.onclick = () => { filtroAtual = f.id; buildFiltros(); renderGrid(); };
+    filtrosEl.appendChild(btn);
+  });
+}
+
+function renderGrid() {
+  gridEl.innerHTML = "";
+  const lista = filtroAtual === "todos" ? receitas : receitas.filter(r => r.cat === filtroAtual);
+  lista.forEach((r, idx) => {
+    const id = "r" + idx + "_" + Date.now();
+    const ingsHtml  = r.ingredientes.map(i => `<li>${i}</li>`).join("");
+    const extrasHtml = r.extras.length ? `<p class="card-extras">+ ${r.extras.join(" · ")}</p>` : "";
+    const preparoHtml = r.preparo.map(p => `<li>${p}</li>`).join("");
+    const card = document.createElement("div");
+    card.className = "receita-card";
+    card.innerHTML = `
+      <div class="card-topo">
+        <span class="card-emoji">${r.emoji}</span>
+        <h3 class="card-titulo">${r.titulo}</h3>
+        <p class="card-desc">${r.desc}</p>
+        <span class="card-catbadge ${catClass[r.cat]}">${r.catLabel}</span>
+      </div>
+      <div class="card-ings">
+        <span class="card-ings-label">Ingredientes</span>
+        <ul>${ingsHtml}</ul>
+        ${extrasHtml}
+      </div>
+      <button class="toggle-preparo" id="btn-${id}" aria-expanded="false">
+        Ver modo de preparo <span class="toggle-seta">▼</span>
+      </button>
+      <div class="preparo-wrap" id="preparo-${id}" role="region">
+        <span class="preparo-label">Modo de preparo</span>
+        <ol class="preparo-lista">${preparoHtml}</ol>
+      </div>
+    `;
+    gridEl.appendChild(card);
+    const btn    = card.querySelector(`#btn-${id}`);
+    const preparo = card.querySelector(`#preparo-${id}`);
+    btn.addEventListener("click", () => {
+      const aberto = preparo.classList.toggle("visivel");
+      btn.classList.toggle("aberto", aberto);
+      btn.setAttribute("aria-expanded", aberto);
+      btn.innerHTML = (aberto ? "Ocultar preparo" : "Ver modo de preparo") + ` <span class="toggle-seta">${aberto ? "▲" : "▼"}</span>`;
+    });
+  });
+}
+
+buildFiltros();
+renderGrid();
+</script>
+</body>
+</html>
